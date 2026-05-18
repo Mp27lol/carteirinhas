@@ -60,6 +60,36 @@
     a:hover {
       text-decoration: underline;
     }
+
+    .botao-topo {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: white !important;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .botao-topo:hover {
+      opacity: 0.9;
+      transform: scale(1.03);
+    }
+
+    .planilha {
+      background-color: #28a745;
+    }
+
+    .tutorial {
+      background-color: #28a745;
+    }
+
+    .downloads {
+      background-color: #ff9800;
+    }
   </style>
 </head>
 
@@ -91,36 +121,27 @@
   </div>
 
   <!-- DIREITA -->
-  <div style="display: flex; gap: 8px;">
+  <div style="display: flex; gap: 8px; flex-wrap: wrap;">
 
-    <a href="https://drive.google.com/file/d/1Ng_u34o6j0NaSqgnfPUiMKcnQc32V4T_/view?usp=sharing" target="_blank" style="
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background-color: #28a745;
-      color: white;
-      padding: 6px 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 500;
-    ">
+    <!-- PLANILHA -->
+    <a href="https://drive.google.com/file/d/1Ng_u34o6j0NaSqgnfPUiMKcnQc32V4T_/view?usp=sharing"
+       target="_blank"
+       class="botao-topo planilha">
       📊 Planilha
     </a>
 
-    <a href="https://drive.google.com/file/d/1-Dc-ITD58j9zEhf1YWTzWkRlBmDjDiub/view?usp=sharing" target="_blank" style="
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background-color: #28a745;
-      color: white;
-      padding: 6px 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 500;
-    ">
+    <!-- TUTORIAL -->
+    <a href="https://drive.google.com/file/d/1-Dc-ITD58j9zEhf1YWTzWkRlBmDjDiub/view?usp=sharing"
+       target="_blank"
+       class="botao-topo tutorial">
       🎥 Tutorial
+    </a>
+
+    <!-- NOVO BOTÃO -->
+    <a href="COLE_AQUI_O_LINK_DO_DOWNLOAD"
+       target="_blank"
+       class="botao-topo downloads">
+      💻 Downloads Suporte T.I
     </a>
 
   </div>
