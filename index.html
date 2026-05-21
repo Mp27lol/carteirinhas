@@ -161,18 +161,287 @@
     <li>🏭 <strong>Duque de Caxias:</strong> <a href="https://drive.google.com/drive/folders/1qMqWX3qNtNTGA81e2rLooWLOqJBsSQzL?usp=sharing" target="_blank">Acessar pasta</a></li>
   </ul>
 </main>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a0f2c322b50d01c367b8d69/1jp5k99ep';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chat Box Premium</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#111;
+}
+
+/* BOTÃO FLUTUANTE */
+
+.chat-toggle{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    border:none;
+    background:linear-gradient(135deg,#ff4d8d,#ff0066);
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(255,0,102,.4);
+    z-index:999;
+    transition:.3s;
+}
+
+.chat-toggle:hover{
+    transform:scale(1.1);
+}
+
+/* CHAT */
+
+.chat-container{
+    position:fixed;
+    bottom:100px;
+    right:25px;
+    width:360px;
+    height:550px;
+    background:#fff;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    display:none;
+    flex-direction:column;
+    z-index:999;
+    animation:showChat .3s ease;
+}
+
+@keyframes showChat{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* TOPO */
+
+.chat-header{
+    background:linear-gradient(135deg,#ff4d8d,#ff0066);
+    padding:18px;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.chat-header img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:2px solid white;
+}
+
+.chat-info h3{
+    font-size:18px;
+}
+
+.chat-info p{
+    font-size:13px;
+    opacity:.9;
+}
+
+/* MENSAGENS */
+
+.chat-body{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+    background:#f5f5f5;
+}
+
+.message{
+    max-width:80%;
+    padding:12px 15px;
+    margin-bottom:12px;
+    border-radius:18px;
+    font-size:14px;
+    line-height:1.4;
+}
+
+.bot{
+    background:white;
+    color:#333;
+    border-bottom-left-radius:5px;
+}
+
+.user{
+    background:#ff0066;
+    color:white;
+    margin-left:auto;
+    border-bottom-right-radius:5px;
+}
+
+/* INPUT */
+
+.chat-footer{
+    padding:15px;
+    background:white;
+    display:flex;
+    gap:10px;
+    border-top:1px solid #eee;
+}
+
+.chat-footer input{
+    flex:1;
+    padding:12px;
+    border-radius:30px;
+    border:1px solid #ddd;
+    outline:none;
+}
+
+.chat-footer button{
+    background:#ff0066;
+    color:white;
+    border:none;
+    width:50px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:480px){
+
+.chat-container{
+    width:95%;
+    right:2.5%;
+    height:85vh;
+    bottom:90px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- BOTÃO -->
+
+<button class="chat-toggle" onclick="toggleChat()">
+💬
+</button>
+
+<!-- CHAT -->
+
+<div class="chat-container" id="chatBox">
+
+    <div class="chat-header">
+
+        <!-- SUA LOGO -->
+        <img src="SUA-LOGO.png" alt="Logo">
+
+        <div class="chat-info">
+            <h3>Ateliê da Beleza</h3>
+            <p>Online agora</p>
+        </div>
+
+    </div>
+
+    <div class="chat-body" id="chatBody">
+
+        <div class="message bot">
+            👋 Olá! Seja bem-vinda ao Ateliê da Beleza.
+            Como podemos te ajudar hoje?
+        </div>
+
+    </div>
+
+    <div class="chat-footer">
+
+        <input 
+            type="text" 
+            id="messageInput"
+            placeholder="Digite sua mensagem..."
+        >
+
+        <button onclick="sendMessage()">
+            ➤
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const chatBox = document.getElementById("chatBox");
+const chatBody = document.getElementById("chatBody");
+
+function toggleChat(){
+
+    if(chatBox.style.display === "flex"){
+        chatBox.style.display = "none";
+    }else{
+        chatBox.style.display = "flex";
+    }
+
+}
+
+function sendMessage(){
+
+    const input = document.getElementById("messageInput");
+
+    if(input.value.trim() === "") return;
+
+    // mensagem usuário
+
+    const userMessage = document.createElement("div");
+    userMessage.classList.add("message","user");
+    userMessage.innerText = input.value;
+
+    chatBody.appendChild(userMessage);
+
+    // resposta automática
+
+    setTimeout(()=>{
+
+        const botMessage = document.createElement("div");
+        botMessage.classList.add("message","bot");
+
+        botMessage.innerHTML = `
+        ✨ Obrigado pelo contato!<br><br>
+        Nosso atendimento irá responder você em instantes 💖
+        `;
+
+        chatBody.appendChild(botMessage);
+
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+    },1000);
+
+    input.value = "";
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+}
+
 </script>
-<!--End of Tawk.to Script-->
+
+</body>
+</html>
 </body>
 </html>
